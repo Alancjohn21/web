@@ -1,0 +1,104 @@
+ 
+<html>
+<head>
+<title>Student Registration Form</title>
+<style>
+body {
+   font-family: Arial, sans-serif;
+   background-color: #FAFAFA;
+}
+
+.container {
+   width: 300px;
+   padding: 16px;
+   background-color: white;
+   margin: 0 auto;
+   margin-top: 100px;
+   box-shadow: 0px 0px 10px 0px grey;
+}
+
+input[type=text], input[type=email], input[type=tel], input[type=radio], input[type=checkbox] {
+   width: 100%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   border: none;
+   background: #f1f1f1;
+}
+
+input[type=submit] {
+   background-color: #4CAF50;
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+}
+
+input[type=submit]:hover {
+   background-color: #45a049;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<label for="name"><b>Name</b></label>
+<input type="text" placeholder="Enter Name" name="name" id="name" required>
+
+<label for="email"><b>Email</b></label>
+<input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+<label for="dob"><b>Date of Birth</b></label>
+<input type="date" name="dob" id="dob" required>
+
+<label for="phone"><b>Phone Number</b></label>
+<input type="tel" placeholder="Enter Phone Number" name="phone" id="phone" required>
+
+<label for="course"><b>Course</b></label>
+<input type="radio" name="course" id="course1" value="course1" required> Course 1
+<input type="radio" name="course" id="course2" value="course2" required> Course 2
+<input type="radio" name="course" id="course3" value="course3" required> Course 3
+
+<label for="gender"><b>Gender</b></label>
+<input type="checkbox" name="gender" id="male" value="male" required> Male
+<input type="checkbox" name="gender" id="female" value="female" required> Female
+<input type="checkbox" name="gender" id="other" value="other" required> Other
+
+<input type="submit" value="Submit" onclick="validateForm()">
+</div>
+
+<script>
+function validateForm() {
+   var name = document.getElementById('name').value;
+   var email = document.getElementById('email').value;
+   var dob = document.getElementById('dob').value;
+   var phone = document.getElementById('phone').value;
+   var course = document.querySelector('input[name="course"]:checked').value;
+   var gender = [];
+   document.querySelectorAll('input[name="gender"]:checked').forEach(function(item) {
+       gender.push(item.value);
+   });
+
+   if (name == "" || email == "" || dob == "" || phone == "" || course == "" || gender.length == 0) {
+       alert("Please fill out all required fields.");
+       return false;
+   }
+
+   var regexEmail = /^\S+@\S+\.\S+$/;
+   if (!regexEmail.test(email)) {
+       alert("Please enter a valid email address.");
+       return false;
+   }
+
+   var regexPhone = /^\d{10}$/;
+   if (!regexPhone.test(phone)) {
+       alert("Please enter a valid phone number.");
+       return false;
+   }
+
+   return true;
+}
+</script>
+
+</body>
+</html>

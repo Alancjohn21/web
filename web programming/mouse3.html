@@ -1,0 +1,44 @@
+<html>
+
+<body>
+
+<h2>JavaScript addEventListener()</h2>
+
+
+ <button id="btn">hi</button>
+ <p id="demo"></p>
+ <button id="btn2">hello</button>
+<p id="demo2"></p>
+ <script>
+ var x=document.getElementById("btn");
+ x.addEventListener("mouseover",over);
+ x.addEventListener("click",clicked);
+ x.addEventListener("mouseout",out);
+   function over(){
+     document.getElementById("demo").innerHTML +="over bro!<br>";
+   }
+   function out(){
+     document.getElementById("demo").innerHTML +="bye bro!<br>";
+   }
+  function clicked(){
+     document.getElementById("demo").innerHTML +="clicked bro!<br>";
+   }
+   var y=document.getElementById("btn2");
+   y.addEventListener("mouseover",Over);
+   y.addEventListener("click",Clicked);
+   y.addEventListener("mouseout",Out);
+   function Over(){
+     document.getElementById("demo2").innerHTML +="over MY bro!<br>";
+   }
+   function   Out(){
+     document.getElementById("demo2").innerHTML +="bye MY bro!<br>";
+   }
+  function Clicked(){
+     document.getElementById("demo2").innerHTML +="clicked MY bro!<br>";
+   }
+
+</script>
+
+</body>
+
+</html>

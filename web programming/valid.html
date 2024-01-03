@@ -1,0 +1,62 @@
+<html>
+<body bgcolor="red">
+<h1><font color="black">REGISTRATION FORM</font></h1>
+<form name="reg" onsubmit="return validateform()">
+Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="text" name="fname" >
+<br><br>
+Date of Birth:&nbsp; &nbsp;
+<input type="text" name="dob" placeholder="dd/mm/yyyy"><br><br>
+Gender:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="radio" name="gender">
+<label name="Male">Male</label>
+<input type="radio" name="gender">
+<label name="Female">Female</label><br><br>
+Address: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <textarea rows="5" cols="30" placeholder="Enter full address "></textarea><br><br>
+Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="text" name="mail"><br><br>
+Phone: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="text" name="mobile"><br><br>
+&nbsp; &nbsp;
+<input type="submit">&nbsp; <input type="reset"></form>
+</body>
+
+<script>
+function validateform()
+{
+var fname = document.forms["reg"]["fname"].value;
+var dob = document.forms["reg"]["dob"].value;
+var mail = document.forms["reg"]["mail"].value;
+var mobile = document.forms["reg"]["mobile"].value;
+
+if (fname === "")
+{
+        alert("Name is required");
+        return false;
+        }
+if (dob === "" || isNaN(dob))
+       {
+        alert("Please enter your dob ");
+        return false;
+}
+if (mobile === "" || isNaN(mobile) || mobile.length !== 10)
+  {
+        alert("Invalid Mobile Number");
+        return false;
+    }
+if (mail === "" || !isValidEmail(mail))
+{
+        alert("Invalid Email Address");
+        return false;
+    }
+return true;
+}
+
+function isValidEmail(mail)
+{
+    var valid = /\S+@\S/;
+    return valid.test(mail);
+}
+</script>
+</body>
+</html>

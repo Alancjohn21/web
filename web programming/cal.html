@@ -1,0 +1,104 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+
+</head>
+
+<body>
+    <center>
+        <div class="selection">
+            <table class="tabselection" cellspacing="10">
+                <tbody>
+                    <tr class="selrow">
+                        <h3>ENTER THE YEAR AND MONTH</h3>
+                        <td class="selcol"><input id="year_get" type="number" placeholder="year"> </td>
+                        <td class="selcol"><input id="month_get" type="number" placeholder="month"> </td>
+                    </tr>
+                    <tr class="selrow">
+                        <td colspan="2" class="selcol"><input onclick="generate()" type="button" id="subtn" value="Generate Calender"> </td>
+                    </tr>
+                    <tr class="selrow">
+                        <td colspan="2" class="selcol"><input type="reset" value="reset" id="resetbtn" onclick="location.reload();"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="content"> </div>
+
+    </center>
+</body>
+<script>
+    function generate() {
+        var year_get = document.getElementById("year_get").value;
+        var month_get = document.getElementById("month_get").value;
+        if (month_get == 1) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>january</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 2) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>february</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 3) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>march</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 4) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>april</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 5) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>may</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 6) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>june</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 7) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>july</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 8) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>august</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 9) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>september</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 10) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>october</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 11) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>novemeber</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        } else if (month_get == 12) {
+            var init_content = "<table BORDER=1 id='calender'><tr><th>" + year_get + "</th></tr><tr><th>december</th></tr><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+
+        }
+
+        month_get -= 1;
+
+        var date = new Date(year_get, month_get);
+        var day = date.getDay();
+        for (var i = 0; i < day; i++) {
+            init_content += "<td></td>";
+        }
+        while (date.getMonth() == month_get) {
+            init_content += "<td>" + date.getDate() + "</td>";
+            if (date.getDay() % 7 == 6) {
+                init_content += "</tr><tr>";
+            }
+            date.setDate(date.getDate() + 1);
+        }
+
+        while (date.getDay() % 7 != 6 && date.getDay() % 7 != 0) {
+            init_content += "<td></td>";
+            date.setDate(date.getDate() + 1);
+        }
+
+        if (date.getDay() % 7 > 0) {
+            init_content += "<td></td></tr>";
+        }
+
+        init_content += "</table>"
+        document.getElementById("content").innerHTML = init_content;
+    }
+</script>
+
+</html>
